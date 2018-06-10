@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            border: none;
+        }
+
+        td, th {
+            text-align: left;
+            white-space: pre-wrap;
+            border: solid #000 1px;
+        }
+    </style>
+</head>
+<body>
+<a href="/book/add/" style=" margin-top: 2em;">添加书籍</a>
+<hr>
+<p>Total <span style="color: darkmagenta;font-weight: bold"> {{ count }}</span> books.</p>
+{% if book_list %}
+    <table>
+        <tr>
+            <th>书名</th>
+            <th colspan="2">操作</th>
+            <th>作者</th>
+            <th>介绍</th>
+        </tr>
+        {% for book in book_list %}
+            <tr>
+                <td><a href="/book/{{ book.id }}">{{ book.name }}</a></td>
+                <td><a href="/book/edit/{{ book.id }}">编辑</a></td>
+                <td><a onclick="return confirm('确定删除吗？')" href="/book/delete/{{ book.id }}">删除</a></td>
+                <td>{{ book.author }}</td>
+                <td class="description">{{ book.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a book</title>
+</head>
+<body>
+<a href="/book/">返回列表</a>
+<hr>
+<form>
+    <input name="name" type="text" placeholder="书名"><br>
+    <input name="author" type="text" placeholder="作者"><br>
+    <textarea name="description" rows="8" cols="40" placeholder="书籍介绍..."></textarea><br>
+    <button type="submit" formmethod="post">保存</button>
+    <br>
+    <spn style="color:red">{{ message }}</spn>
+    {% csrf_token %}
+</form>
+
+</body>
+</html>
