@@ -1,7 +1,8 @@
 import datetime
 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
@@ -13,8 +14,8 @@ from book.models import Book
 def index(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
-    return HttpResponseRedirect('/admin/')
-    # return HttpResponse(html)
+    # return HttpResponseRedirect('/admin/')
+    return HttpResponse(html)
     # return render(request, 'index.html', {'time': now}, status='220')
 
 
@@ -103,3 +104,5 @@ https://docs.djangoproject.com/en/2.0/topics/db/queries/
 https://v3.bootcss.com/examples/theme/
 https://v3.bootcss.com/components
 '''
+
+

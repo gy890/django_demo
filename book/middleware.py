@@ -11,7 +11,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 
-class BookMiddleware:
+class BookMiddleware(object):
     def __init__(self, get_response):
         self.get_response = get_response
         # One-time configuration and initialization.
@@ -23,11 +23,11 @@ class BookMiddleware:
         print('*' * 64)
         user = request.user
         print("BookMiddleware executed by {}".format(user))
-        if str(user) == 'AnonymousUser':
-            print('匿名用户')
+        if str(
+                user) == 'gui' and '/admin/' not in request.path:  # 如果是管理员gui并且当前路径不是/admin/跳转到/admin/，不加requst.path 会循环重定向
+            print(request.user, request.path)
             # return HttpResponseRedirect("https://cn.bing.com/")
-            # return HttpResponseRedirect("/admin/")
-            # return HttpResponse('FEETET')
+            return HttpResponseRedirect("/admin/")
 
         response = self.get_response(request)
 

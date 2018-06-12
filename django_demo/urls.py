@@ -19,7 +19,7 @@ from book import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', admin.site.urls),
+    path('accounts/login/', admin.site.urls), # WARNINGS:?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace
     path('', views.index),
     path('index/', views.index),
     path('book/', views.book_list),
